@@ -1,0 +1,8 @@
+{
+  "osid": "12209624",
+  "platform": "Stock 3.4L",
+  "tables": {
+    "fuel_map": "0x5432",
+    "spark_table": "0x6543"
+  }
+}

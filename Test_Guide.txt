@@ -1,0 +1,7 @@
+OpenTune Lite - Starter Test Guide
+
+1. Run OpenTuneLite.exe (after GitHub builds it for you).
+2. It will list loaded DEF files (Hybrid + Stock).
+3. This confirms definitions are packaged correctly.
+
+Next steps: expand definitions, add BIN editing, logging, and flashing.

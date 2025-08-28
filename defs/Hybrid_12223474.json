@@ -1,0 +1,8 @@
+{
+  "osid": "12223474",
+  "platform": "Hybrid",
+  "tables": {
+    "fuel_map": "0x1234",
+    "spark_table": "0x2345"
+  }
+}
