@@ -1,0 +1,35 @@
+name: Build OpenTuneLite
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+      - name: Install PyInstaller
+        run: pip install pyinstaller
+      - name: Build EXE
+        run: pyinstaller --onefile opentune_lite.py
+      - name: Package Zip
+        run: |
+          mkdir dist_zip
+          copy dist\opentune_lite.exe dist_zip\OpenTuneLite.exe
+          xcopy defs dist_zip\defs\ /E /I
+          xcopy bin dist_zip\bin\ /E /I
+          copy Test_Guide.txt dist_zip\
+          powershell -command "Compress-Archive -Path dist_zip\* -DestinationPath OpenTuneLite_Starter_Windows.zip -Force"
+      - name: Upload Release
+        uses: softprops/action-gh-release@v1
+        with:
+          files: OpenTuneLite_Starter_Windows.zip
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
